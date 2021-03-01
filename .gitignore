@@ -1,6 +1,7 @@
-node_modules
+.DS_Store
+
 
 # firebase key
 practice-tracker-80315-firebase-adminsdk-t350m-7a616b75a1.json
 
-# wtf man
+node_modules
