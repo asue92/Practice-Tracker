@@ -1,4 +1,4 @@
-node_modules/**/*
+node_modules
 
 # firebase key
 .practice-tracker-80315-firebase-adminsdk-t350m-7a616b75a1.json
