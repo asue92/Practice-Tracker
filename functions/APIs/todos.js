@@ -4,18 +4,40 @@ exports.getAllTodos = async (request, response) => {
   try {
     const data = await db
       .collection("todos")
+      .where("username", "==", request.user.username)
       .orderBy("createdAt", "desc")
       .get();
     let todos = [];
     data.forEach((doc) => {
       todos.push({
         todoId: doc.id,
+        username: request.user.username,
         title: doc.data().title,
         body: doc.data().body,
         createdAt: doc.data().createdAt,
       });
     });
     return response.json(todos);
+  } catch (error) {
+    console.error(error);
+    return response.status(500).json({ error: error.code });
+  }
+};
+
+exports.getOneTodo = async (request, response) => {
+  try {
+    let document = await db.doc(`/todos/${request.params.todoId}`).get();
+    if (!document.exists) {
+      return response.status(404).json({
+        error: "Todo not found",
+      });
+    }
+    if (document.data().username !== request.user.username) {
+      return response.status(403).json({ error: "Unauthorized" });
+    }
+    let TodoData = document.data();
+    TodoData.todoId = document.id;
+    return response.json(TodoData);
   } catch (error) {
     console.error(error);
     return response.status(500).json({ error: error.code });
@@ -32,6 +54,7 @@ exports.postOneTodo = async (request, response) => {
       return response.status(400).json({ title: "Must not be empty" });
     }
     const newTodoItem = {
+      username: request.user.username,
       title: request.body.title,
       body: request.body.body,
       createdAt: new Date().toISOString(),
@@ -54,6 +77,9 @@ exports.deleteTodo = async (request, response) => {
     const foundDoc = await document.get();
     if (!foundDoc.exists) {
       return response.status(404).json({ error: "Todo not found" });
+    }
+    if (foundDoc.data().username !== request.user.username) {
+      return response.status(403).json({ error: "Unauthorized" });
     }
     document.delete();
     response.json({ message: "delete succesful!" });
