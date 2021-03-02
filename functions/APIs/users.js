@@ -32,6 +32,8 @@ exports.loginUser = async (request, response) => {
   }
 };
 
+// Signup
+
 exports.signUpUser = async (request, response) => {
   try {
     const newUser = {
@@ -150,6 +152,33 @@ exports.uploadProfilePhoto = (request, response) => {
       });
   });
   busboy.end(request.rawBody);
+};
+
+exports.getUserDetail = async (request, response) => {
+  try {
+    let userData = {};
+    let newDoc = await db.doc(`/users/${request.user.username}`).get();
+    if (newDoc.exists) {
+      userData.userCredentials = newDoc.data();
+    }
+    response.json(userData);
+  } catch (error) {
+    console.error(error);
+    return response.status(500).json({ error: error.code });
+  }
+};
+
+exports.updateUserDetails = async (request, response) => {
+  try {
+    let document = await db.collection("users").doc(`${request.user.username}`);
+    await document.update(request.body);
+    response.json({ message: "Updated successfully" });
+  } catch (error) {
+    console.error(error);
+    return response.status(500).json({
+      message: "Cannot Update the value",
+    });
+  }
 };
 
 // {
