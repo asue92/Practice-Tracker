@@ -15,7 +15,7 @@ import { loginStyles } from "./styling";
 
 import axios from "axios";
 
-class login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -57,7 +57,10 @@ class login extends Component {
       )
       .then((response) => {
         console.log("RESPONSE>>>", response);
-        localStorage.setItem("AuthToken", `Bearer ${response.data.token}`);
+        localStorage.setItem(
+          "AuthToken",
+          `Bearer ${response.data.userIdToken}`
+        );
         this.setState({
           loading: false,
         });
@@ -65,7 +68,7 @@ class login extends Component {
       })
       .catch((error) => {
         this.setState({
-          // errors: error.response.data,
+          errors: error.response.data,
           loading: false,
         });
       });
@@ -146,4 +149,4 @@ class login extends Component {
   }
 }
 
-export default withStyles(loginStyles)(login);
+export default withStyles(loginStyles)(Login);
