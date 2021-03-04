@@ -200,7 +200,7 @@ class Todo extends Component {
     } else {
       return (
         <main className={classes.content}>
-          <div className={classes.toolbar} />
+          <div className={classes.toolbar} style={{ padding: 8 }} />
 
           <IconButton
             className={classes.floatingButton}
@@ -211,7 +211,7 @@ class Todo extends Component {
             <AddCircleIcon style={{ fontSize: 60 }} />
           </IconButton>
           <Dialog
-            fullScreen
+            fullWidth
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
@@ -243,7 +243,7 @@ class Todo extends Component {
             </AppBar>
 
             <form className={classes.form} noValidate>
-              <Grid container spacing={2}>
+              <Grid container spacing={6}>
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
