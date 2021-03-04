@@ -15,7 +15,7 @@ import axios from "axios";
 
 import { signupStyles } from "./styling";
 
-class signup extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
 
@@ -251,4 +251,4 @@ class signup extends Component {
   }
 }
 
-export default withStyles(signupStyles)(signup);
+export default withStyles(signupStyles)(Signup);
