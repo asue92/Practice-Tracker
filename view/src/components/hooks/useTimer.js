@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from "axios";
 
 // SECOND VALUE IS TIMER
 
@@ -8,6 +9,9 @@ const useTimer = (initialState = 0) => {
   const [isPaused, setIsPaused] = useState(false);
   const countRef = useRef(null);
 
+  const authToken = localStorage.getItem("AuthToken");
+  axios.defaults.headers.common = { Authorization: `${authToken}` };
+
   const handleStart = () => {
     setIsActive(true);
     setIsPaused(true);
@@ -16,10 +20,16 @@ const useTimer = (initialState = 0) => {
     }, 1000);
   };
 
-  const handlePause = () => {
+  const handlePause = async (priorTime) => {
     clearInterval(countRef.current);
     setIsPaused(false);
-    console.log(timer);
+    const writeTimer = {
+      seconds: timer + priorTime,
+    };
+    await axios.post(
+      "http://localhost:5000/practice-tracker-80315/us-central1/api/user",
+      writeTimer
+    );
   };
 
   const handleResume = () => {
