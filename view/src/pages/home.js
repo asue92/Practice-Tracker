@@ -4,6 +4,7 @@ import { authMiddleWare } from "../util/auth";
 
 import Account from "../components/account";
 import Todo from "../components/todo";
+import Interface from "../components/interface";
 
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -124,12 +125,12 @@ class Home extends Component {
             </center>
             <Divider />
             <List>
-              <ListItem button key="Todo" onClick={this.loadTodoPage}>
+              <ListItem button key="Home" onClick={this.loadTodoPage}>
                 <ListItemIcon>
                   {" "}
                   <NotesIcon />{" "}
                 </ListItemIcon>
-                <ListItemText primary="Todo" />
+                <ListItemText primary="Home" />
               </ListItem>
 
               <ListItem button key="Account" onClick={this.loadAccountPage}>
@@ -150,7 +151,7 @@ class Home extends Component {
             </List>
           </Drawer>
 
-          <div>{this.state.render ? <Account /> : <Todo />}</div>
+          <div>{this.state.render ? <Account /> : <Interface />}</div>
         </div>
       );
     }
