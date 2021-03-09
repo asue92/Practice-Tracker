@@ -7,7 +7,9 @@ import { formatTime } from "../util/formatTime";
 
 const element = <FontAwesomeIcon icon={faClock} />;
 
-const Timer = () => {
+const Timer = (props) => {
+  const { seconds, setSeconds } = props;
+
   const {
     timer,
     isActive,
@@ -27,7 +29,7 @@ const Timer = () => {
           {!isActive && !isPaused ? (
             <button onClick={handleStart}>Start</button>
           ) : isPaused ? (
-            <button onClick={handlePause}>Pause</button>
+            <button onClick={(evt) => handlePause(seconds)}>Pause</button>
           ) : (
             <button onClick={handleResume}>Resume</button>
           )}
