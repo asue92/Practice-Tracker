@@ -72,7 +72,9 @@ class Home extends Component {
           username: userData.data.userCredentials.username,
           uiLoading: false,
           profilePicture: userData.data.userCredentials.imageUrl,
+          seconds: userData.data.userCredentials.seconds,
         });
+        console.log("HOME STATE", this.state);
       }
     } catch (error) {
       if (error.response.status === 403) {
@@ -82,7 +84,6 @@ class Home extends Component {
       this.setState({ errorMsg: "Error in retrieving the data" });
     }
   };
-
   render() {
     const { classes } = this.props;
     if (this.state.uiLoading === true) {
@@ -151,7 +152,13 @@ class Home extends Component {
             </List>
           </Drawer>
 
-          <div>{this.state.render ? <Account /> : <Interface />}</div>
+          <div>
+            {this.state.render ? (
+              <Account />
+            ) : (
+              <Interface seconds={this.state.seconds} />
+            )}
+          </div>
         </div>
       );
     }
