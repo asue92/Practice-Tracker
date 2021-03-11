@@ -1,9 +1,13 @@
 import React from "react";
+import { Box, Container } from "@material-ui/core";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 
 import useTimer from "./hooks/useTimer";
 import { formatTime } from "../util/formatTime";
+import { toolStyles } from "./componentStyling";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const element = <FontAwesomeIcon icon={faClock} />;
 
@@ -21,25 +25,29 @@ const Timer = (props) => {
   } = useTimer(0);
 
   return (
-    <div className="app">
-      <h3>React Stopwatch {element}</h3>
-      <div className="stopwatch-card">
-        <p>{formatTime(timer)}</p>
-        <div className="buttons">
-          {!isActive && !isPaused ? (
-            <button onClick={handleStart}>Start</button>
-          ) : isPaused ? (
-            <button onClick={(evt) => handlePause(seconds)}>Pause</button>
-          ) : (
-            <button onClick={handleResume}>Resume</button>
-          )}
-          <button onClick={handleReset} disabled={!isActive}>
-            Reset
-          </button>
+    <Box border={1} padding={4}>
+      <Container maxWidth="sm">
+        <div className="app">
+          <h3>Practice Timer {element}</h3>
+          <div className="stopwatch-card">
+            <p>{formatTime(timer)}</p>
+            <div className="buttons">
+              {!isActive && !isPaused ? (
+                <button onClick={handleStart}>Start</button>
+              ) : isPaused ? (
+                <button onClick={(evt) => handlePause(seconds)}>Pause</button>
+              ) : (
+                <button onClick={handleResume}>Resume</button>
+              )}
+              <button onClick={handleReset} disabled={!isActive}>
+                Reset
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Box>
   );
 };
 
-export default Timer;
+export default withStyles(toolStyles)(Timer);
