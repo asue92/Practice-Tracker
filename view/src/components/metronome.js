@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+
+import { Container, Box } from "@material-ui/core";
+import { toolStyles } from "./componentStyling";
+import withStyles from "@material-ui/core/styles/withStyles";
+
 import click1 from "../sounds/click1.wav";
 import click2 from "../sounds/click2.wav";
 
@@ -67,23 +72,31 @@ class Metronome extends Component {
 
   render() {
     const { playing, bpm } = this.state;
-
+    const { classes } = this.props;
     return (
-      <div className="metronome">
-        <div className="bpm-slider">
-          <div>{bpm} BPM</div>
-          <input
-            type="range"
-            min="60"
-            max="240"
-            value={bpm}
-            onChange={this.handleBpmChange}
-          />
-        </div>
-        <button onClick={this.startStop}>{playing ? "Stop" : "Start"}</button>
-      </div>
+      <Box border={1} padding={4}>
+        <Container maxWidth="sm">
+          <div className="metronome">
+            <div className="bpm-slider">
+              <h3>Metronome</h3>
+
+              <div>{bpm} BPM</div>
+              <input
+                type="range"
+                min="60"
+                max="240"
+                value={bpm}
+                onChange={this.handleBpmChange}
+              />
+            </div>
+            <button onClick={this.startStop}>
+              {playing ? "Stop" : "Start"}
+            </button>
+          </div>
+        </Container>
+      </Box>
     );
   }
 }
 
-export default Metronome;
+export default withStyles(toolStyles)(Metronome);
