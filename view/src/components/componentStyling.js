@@ -107,3 +107,16 @@ export const accountStyles = (theme) => ({
     marginTop: "10px",
   },
 });
+
+export const toolStyles = (theme) => ({
+  root: {
+    alignItemsAndJustifyContent: {
+      width: 500,
+      height: 80,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "pink",
+    },
+  },
+});
