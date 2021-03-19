@@ -3,14 +3,11 @@ import axios from "axios";
 import { authMiddleWare } from "../util/auth";
 
 import Account from "../components/account";
-import Todo from "../components/todo";
+import Interface from "../components/interface";
 
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -54,6 +51,12 @@ class Home extends Component {
   };
   componentDidMount = async () => {
     try {
+      // firebase
+      //   .auth()
+      //   .currentUser.getIdToken(true)
+      //   .then(function (idToken) {
+      //     console.log(idToken);
+      //   });
       authMiddleWare(this.props.history);
       const authToken = localStorage.getItem("AuthToken");
       axios.defaults.headers.common = { Authorization: `${authToken}` };
@@ -61,27 +64,27 @@ class Home extends Component {
         "http://localhost:5000/practice-tracker-80315/us-central1/api/user"
       );
       console.log("USERDATA>>>", userData);
+      // console.log(localStorage);
       if (userData) {
         this.setState({
           firstName: userData.data.userCredentials.firstName,
           lastName: userData.data.userCredentials.lastName,
           email: userData.data.userCredentials.email,
+          password: this.props.history.location.state.detail,
           phoneNumber: userData.data.userCredentials.phoneNumber,
           country: userData.data.userCredentials.country,
           username: userData.data.userCredentials.username,
           uiLoading: false,
           profilePicture: userData.data.userCredentials.imageUrl,
+          seconds: userData.data.userCredentials.seconds,
         });
+        console.log("HOME STATE", this.state);
       }
     } catch (error) {
-      if (error.response.status === 403) {
-        this.props.history.push("/login");
-      }
       console.log(error);
       this.setState({ errorMsg: "Error in retrieving the data" });
     }
   };
-
   render() {
     const { classes } = this.props;
     if (this.state.uiLoading === true) {
@@ -96,13 +99,13 @@ class Home extends Component {
       return (
         <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="fixed" className={classes.appBar}>
+          {/* <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
               <Typography variant="h6" noWrap>
                 Practice Tracker
               </Typography>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
           <Drawer
             className={classes.drawer}
             variant="permanent"
@@ -124,12 +127,12 @@ class Home extends Component {
             </center>
             <Divider />
             <List>
-              <ListItem button key="Todo" onClick={this.loadTodoPage}>
+              <ListItem button key="Home" onClick={this.loadTodoPage}>
                 <ListItemIcon>
                   {" "}
                   <NotesIcon />{" "}
                 </ListItemIcon>
-                <ListItemText primary="Todo" />
+                <ListItemText primary="Home" />
               </ListItem>
 
               <ListItem button key="Account" onClick={this.loadAccountPage}>
@@ -150,7 +153,18 @@ class Home extends Component {
             </List>
           </Drawer>
 
-          <div>{this.state.render ? <Account /> : <Todo />}</div>
+          <div>
+            {this.state.render ? (
+              <Account />
+            ) : (
+              <Interface
+                seconds={this.state.seconds}
+                email={this.state.email}
+                password={this.state.password}
+                firstName={this.state.firstName}
+              />
+            )}
+          </div>
         </div>
       );
     }
