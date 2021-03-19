@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -56,7 +57,6 @@ class Login extends Component {
         userData
       )
       .then((response) => {
-        console.log("RESPONSE>>>", response);
         localStorage.setItem(
           "AuthToken",
           `Bearer ${response.data.userIdToken}`
@@ -64,7 +64,10 @@ class Login extends Component {
         this.setState({
           loading: false,
         });
-        this.props.history.push("/");
+        this.props.history.push({
+          pathname: "/",
+          state: { detail: this.state.password },
+        });
       })
       .catch((error) => {
         this.setState({

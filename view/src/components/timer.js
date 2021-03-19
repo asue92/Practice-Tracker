@@ -13,7 +13,6 @@ const element = <FontAwesomeIcon icon={faClock} />;
 
 const Timer = (props) => {
   const { seconds, setSeconds } = props;
-
   const {
     timer,
     isActive,
@@ -35,7 +34,13 @@ const Timer = (props) => {
               {!isActive && !isPaused ? (
                 <button onClick={handleStart}>Start</button>
               ) : isPaused ? (
-                <button onClick={(evt) => handlePause(seconds)}>Pause</button>
+                <button
+                  onClick={(evt) =>
+                    handlePause(seconds, props.email, props.password)
+                  }
+                >
+                  Pause
+                </button>
               ) : (
                 <button onClick={handleResume}>Resume</button>
               )}

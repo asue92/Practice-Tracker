@@ -12,13 +12,19 @@ class Interface extends Component {
     this.state = {
       seconds: props.seconds,
     };
+    // console.log(this.props);
   }
   render() {
     return (
       <div>
         {" "}
         <Notifications seconds={this.state.seconds} />{" "}
-        <Timer seconds={this.state.seconds} /> <Metronome />
+        <Timer
+          seconds={this.state.seconds}
+          email={this.props.email}
+          password={this.props.password}
+        />{" "}
+        <Metronome />
       </div>
     );
   }
