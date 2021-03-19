@@ -18,7 +18,10 @@ class Interface extends Component {
     return (
       <div>
         {" "}
-        <Notifications seconds={this.state.seconds} />{" "}
+        <Notifications
+          seconds={this.state.seconds}
+          name={this.props.firstName}
+        />{" "}
         <Timer
           seconds={this.state.seconds}
           email={this.props.email}
