@@ -22,7 +22,7 @@ class Notifications extends Component {
     return (
       <Box border={1} padding={4}>
         <Container maxWidth="sm">
-          Welcome to Practice Tracker!
+          {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
           <Divider />
           {this.convertSeconds(this.state.seconds)}
         </Container>

@@ -161,6 +161,7 @@ class Home extends Component {
                 seconds={this.state.seconds}
                 email={this.state.email}
                 password={this.state.password}
+                firstName={this.state.firstName}
               />
             )}
           </div>
