@@ -21,6 +21,7 @@ const Timer = (props) => {
     handlePause,
     handleResume,
     handleReset,
+    handleLog,
   } = useTimer(0);
 
   return (
@@ -46,6 +47,13 @@ const Timer = (props) => {
               )}
               <button onClick={handleReset} disabled={!isActive}>
                 Reset
+              </button>
+              <button
+                onClick={(evt) =>
+                  handleLog(seconds, props.email, props.password)
+                }
+              >
+                Log
               </button>
             </div>
           </div>
