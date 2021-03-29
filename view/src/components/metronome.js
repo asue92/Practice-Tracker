@@ -6,6 +6,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 import click1 from "../sounds/click1.wav";
 import click2 from "../sounds/click2.wav";
+import Typography from "@material-ui/core/Typography";
 
 class Metronome extends Component {
   constructor(props) {
@@ -72,14 +73,12 @@ class Metronome extends Component {
 
   render() {
     const { playing, bpm } = this.state;
-    const { classes } = this.props;
     return (
       <Box border={1} padding={4}>
         <Container maxWidth="sm">
           <div>
-            <div>
+            <Typography align="center">
               <h3>Metronome</h3>
-
               <div>{bpm} BPM</div>
               <input
                 class="slider"
@@ -89,10 +88,10 @@ class Metronome extends Component {
                 value={bpm}
                 onChange={this.handleBpmChange}
               />
-            </div>{" "}
-            <button onClick={this.startStop}>
-              {playing ? "Stop" : "Start"}
-            </button>
+              <button onClick={this.startStop}>
+                {playing ? "Stop" : "Start"}
+              </button>
+            </Typography>
           </div>
         </Container>
       </Box>
