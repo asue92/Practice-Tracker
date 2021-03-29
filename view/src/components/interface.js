@@ -5,8 +5,6 @@ import Metronome from "./metronome";
 import Notifications from "./notifications";
 import Calendar from "./calendar";
 
-import withStyles from "@material-ui/core/styles/withStyles";
-
 class Interface extends Component {
   constructor(props) {
     super(props);
@@ -30,11 +28,6 @@ class Interface extends Component {
           />{" "}
           <Metronome />
           <div>
-            {/* <header>
-            <div id="logo">
-              <span className="icon">date_range</span>
-            </div>
-          </header> */}
             <main></main>
           </div>{" "}
         </div>

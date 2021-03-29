@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
@@ -7,6 +7,8 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import useTimer from "./hooks/useTimer";
 import { formatTime } from "../util/formatTime";
 import { toolStyles } from "./componentStyling";
+import Typography from "@material-ui/core/Typography";
+
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const element = <FontAwesomeIcon icon={faClock} />;
@@ -26,7 +28,7 @@ const Timer = (props) => {
 
   return (
     <Box border={1} padding={4}>
-      <Container maxWidth="sm">
+      <Typography align="center">
         <div className="app">
           <h3>Practice Timer {element}</h3>
           <div className="stopwatch-card">
@@ -58,7 +60,7 @@ const Timer = (props) => {
             </div>
           </div>
         </div>
-      </Container>
+      </Typography>
     </Box>
   );
 };

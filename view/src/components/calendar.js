@@ -105,6 +105,7 @@ export default class Calendar extends React.Component {
     });
   };
   render() {
+    console.log(Date().toString());
     return (
       <div className="calendar">
         {" "}

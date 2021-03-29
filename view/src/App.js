@@ -13,12 +13,12 @@ import "./App.css";
 
 const theme = createMuiTheme({
   palette: {
-    // primary: {
-    //   light: "#33c9dc",
-    //   main: "#407899",
-    //   dark: "#d50000",
-    //   contrastText: "#fff",
-    // },
+    primary: {
+      light: "#33c9dc",
+      main: "#407899",
+      dark: "#d50000",
+      contrastText: "#fff",
+    },
     // type: "dark",
   },
 });
