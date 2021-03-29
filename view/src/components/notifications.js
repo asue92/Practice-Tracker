@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Container, Box } from "@material-ui/core";
+import { Divider, Box } from "@material-ui/core";
 import { toolStyles } from "./componentStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
@@ -21,11 +21,11 @@ class Notifications extends Component {
   render() {
     return (
       <Box border={1} padding={4}>
-        <Container maxWidth="sm">
+        <Typography align="center" display="intial">
           {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
           <Divider />
           {this.convertSeconds(this.state.seconds)}
-        </Container>
+        </Typography>
       </Box>
     );
   }
