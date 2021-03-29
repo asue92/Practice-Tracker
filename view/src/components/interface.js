@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Timer from "./timer";
 import Metronome from "./metronome";
 import Notifications from "./notifications";
+import Calendar from "./calendar";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -12,22 +13,32 @@ class Interface extends Component {
     this.state = {
       seconds: props.seconds,
     };
-    // console.log(this.props);
   }
   render() {
     return (
-      <div>
-        {" "}
-        <Notifications
-          seconds={this.state.seconds}
-          name={this.props.firstName}
-        />{" "}
-        <Timer
-          seconds={this.state.seconds}
-          email={this.props.email}
-          password={this.props.password}
-        />{" "}
-        <Metronome />
+      <div className="App">
+        <div className="row">
+          {" "}
+          <Notifications
+            seconds={this.state.seconds}
+            name={this.props.firstName}
+          />{" "}
+          <Timer
+            seconds={this.state.seconds}
+            email={this.props.email}
+            password={this.props.password}
+          />{" "}
+          <Metronome />
+          <div>
+            {/* <header>
+            <div id="logo">
+              <span className="icon">date_range</span>
+            </div>
+          </header> */}
+            <main></main>
+          </div>{" "}
+        </div>
+        <Calendar />
       </div>
     );
   }
