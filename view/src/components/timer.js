@@ -7,7 +7,6 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import useTimer from "./hooks/useTimer";
 import { formatTime } from "../util/formatTime";
 import { toolStyles } from "./componentStyling";
-import Typography from "@material-ui/core/Typography";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -28,39 +27,29 @@ const Timer = (props) => {
 
   return (
     <Box border={1} padding={4}>
-      <Typography align="center">
-        <div className="app">
-          <h3>Practice Timer {element}</h3>
-          <div className="stopwatch-card">
-            <p>{formatTime(timer)}</p>
-            <div className="buttons">
-              {!isActive && !isPaused ? (
-                <button onClick={handleStart}>Start</button>
-              ) : isPaused ? (
-                <button
-                  onClick={(evt) =>
-                    handlePause(seconds, props.email, props.password)
-                  }
-                >
-                  Pause
-                </button>
-              ) : (
-                <button onClick={handleResume}>Resume</button>
-              )}
-              <button onClick={handleReset} disabled={!isActive}>
-                Reset
-              </button>
-              <button
-                onClick={(evt) =>
-                  handleLog(seconds, props.email, props.password)
-                }
-              >
-                Log
-              </button>
-            </div>
+      <div align="center">
+        <h3>Practice Timer {element}</h3>
+        <p>{formatTime(timer)}</p>
+        <div className="stopwatch-card">
+          <div className="buttons">
+            {!isActive && !isPaused ? (
+              <button onClick={handleStart}>Start</button>
+            ) : isPaused ? (
+              <button onClick={(evt) => handlePause()}>Pause</button>
+            ) : (
+              <button onClick={handleResume}>Resume</button>
+            )}
+            <button onClick={handleReset} disabled={!isActive}>
+              Reset
+            </button>
+            <button
+              onClick={(evt) => handleLog(seconds, props.email, props.password)}
+            >
+              Log
+            </button>
           </div>
         </div>
-      </Typography>
+      </div>
     </Box>
   );
 };

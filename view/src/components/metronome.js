@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Container, Box } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { toolStyles } from "./componentStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -75,25 +75,23 @@ class Metronome extends Component {
     const { playing, bpm } = this.state;
     return (
       <Box border={1} padding={4}>
-        <Container maxWidth="sm">
-          <div>
-            <Typography align="center">
-              <h3>Metronome</h3>
-              <div>{bpm} BPM</div>
-              <input
-                class="slider"
-                type="range"
-                min="60"
-                max="240"
-                value={bpm}
-                onChange={this.handleBpmChange}
-              />
-              <button onClick={this.startStop}>
-                {playing ? "Stop" : "Start"}
-              </button>
-            </Typography>
-          </div>
-        </Container>
+        {/* <Container maxWidth="sm"> */}
+        <h4 align="center" fontSize="10em">
+          Metronome
+        </h4>
+        <Typography align="center">
+          {bpm} BPM
+          <input
+            className="slider"
+            type="range"
+            min="60"
+            max="240"
+            value={bpm}
+            onChange={this.handleBpmChange}
+          />
+          <button onClick={this.startStop}>{playing ? "Stop" : "Start"}</button>
+        </Typography>
+        {/* </Container> */}
       </Box>
     );
   }
