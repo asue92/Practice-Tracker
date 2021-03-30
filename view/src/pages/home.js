@@ -8,7 +8,6 @@ import Interface from "../components/interface";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -114,18 +113,13 @@ class Home extends Component {
             }}
           >
             <div className={classes.toolbar} />
-            <Divider />
             <center>
               <Avatar
                 src={this.state.profilePicture}
                 className={classes.avatar}
-              />
-              <p>
-                {" "}
-                {this.state.firstName} {this.state.lastName}
-              </p>
+              />{" "}
+              {this.state.firstName} {this.state.lastName}
             </center>
-            <Divider />
             <List>
               <ListItem button key="Home" onClick={this.loadTodoPage}>
                 <ListItemIcon>

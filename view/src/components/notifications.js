@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Divider, Box } from "@material-ui/core";
 import { toolStyles } from "./componentStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Typography from "@material-ui/core/Typography";
 
 class Notifications extends Component {
   constructor(props) {
@@ -20,12 +19,10 @@ class Notifications extends Component {
   };
   render() {
     return (
-      <Box border={1} padding={4}>
-        <Typography align="center" display="intial">
-          {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
-          <Divider />
-          {this.convertSeconds(this.state.seconds)}
-        </Typography>
+      <Box border={1} padding={4} align="center">
+        {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
+        <Divider />
+        {this.convertSeconds(this.state.seconds)}
       </Box>
     );
   }
