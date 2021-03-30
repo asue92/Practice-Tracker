@@ -75,7 +75,6 @@ class Metronome extends Component {
     const { playing, bpm } = this.state;
     return (
       <Box border={1} padding={4}>
-        {/* <Container maxWidth="sm"> */}
         <h4 align="center" fontSize="10em">
           Metronome
         </h4>
@@ -91,7 +90,6 @@ class Metronome extends Component {
           />
           <button onClick={this.startStop}>{playing ? "Stop" : "Start"}</button>
         </Typography>
-        {/* </Container> */}
       </Box>
     );
   }
