@@ -20,6 +20,7 @@ class Interface extends Component {
           <Notifications
             seconds={this.state.seconds}
             name={this.props.firstName}
+            days={this.props.days}
           />{" "}
           <Timer
             seconds={this.state.seconds}
