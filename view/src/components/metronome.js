@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import { toolStyles } from "./componentStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -73,11 +73,10 @@ class Metronome extends Component {
 
   render() {
     const { playing, bpm } = this.state;
+
     return (
       <Box border={1} padding={4}>
-        <h4 align="center" fontSize="10em">
-          Metronome
-        </h4>
+        <h4 align="center">Metronome</h4>
         <Typography align="center">
           {bpm} BPM
           <input
@@ -88,7 +87,9 @@ class Metronome extends Component {
             value={bpm}
             onChange={this.handleBpmChange}
           />
-          <button onClick={this.startStop}>{playing ? "Stop" : "Start"}</button>
+          <Button variant="contained" onClick={this.startStop}>
+            {playing ? "Stop" : "Start"}
+          </Button>
         </Typography>
       </Box>
     );

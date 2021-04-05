@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
@@ -33,20 +33,31 @@ const Timer = (props) => {
         <div className="stopwatch-card">
           <div className="buttons">
             {!isActive && !isPaused ? (
-              <button onClick={handleStart}>Start</button>
+              <Button variant="contained" onClick={handleStart}>
+                Start
+              </Button>
             ) : isPaused ? (
-              <button onClick={(evt) => handlePause()}>Pause</button>
+              <Button variant="contained" onClick={(evt) => handlePause()}>
+                Pause
+              </Button>
             ) : (
-              <button onClick={handleResume}>Resume</button>
+              <Button variant="contained" onClick={handleResume}>
+                Resume
+              </Button>
             )}
-            <button onClick={handleReset} disabled={!isActive}>
+            <Button
+              variant="contained"
+              onClick={handleReset}
+              disabled={!isActive}
+            >
               Reset
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="contained"
               onClick={(evt) => handleLog(seconds, props.email, props.password)}
             >
               Log
-            </button>
+            </Button>
           </div>
         </div>
       </div>

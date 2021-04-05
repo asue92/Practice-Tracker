@@ -119,4 +119,7 @@ export const toolStyles = (theme) => ({
       backgroundColor: "pink",
     },
   },
+  buttons: {
+    variant: "contained",
+  },
 });
