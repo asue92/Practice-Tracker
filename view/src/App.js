@@ -19,6 +19,9 @@ const theme = createMuiTheme({
       dark: "#d50000",
       contrastText: "#fff",
     },
+    buttons: {
+      variant: "contained",
+    },
     // type: "dark",
   },
 });
