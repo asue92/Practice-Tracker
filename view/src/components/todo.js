@@ -335,7 +335,7 @@ class Todo extends Component {
             <DialogTitle id="customized-dialog-title" onClose={handleViewClose}>
               {this.state.title}
             </DialogTitle>
-            <DialogContent dividers>
+            <DialogContent>
               <TextField
                 fullWidth
                 id="todoDetails"

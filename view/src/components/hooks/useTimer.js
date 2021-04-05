@@ -20,27 +20,6 @@ const useTimer = (initialState = 0) => {
   const handlePause = () => {
     clearInterval(countRef.current);
     setIsPaused(false);
-    // const writeTimer = {
-    //   seconds: timer + priorTime,
-    // };
-    // const userData = {
-    //   email: email,
-    //   password: password,
-    // };
-    // const newToken = await axios.post(
-    //   "http://localhost:5000/practice-tracker-80315/us-central1/api/login",
-    //   userData
-    // );
-    // localStorage.setItem("AuthToken", `Bearer ${newToken.data.userIdToken}`);
-    // axios.defaults.headers.common = {
-    //   Authorization: `Bearer ${newToken.data.userIdToken}`,
-    // };
-
-    // await axios.post(
-    //   "http://localhost:5000/practice-tracker-80315/us-central1/api/user",
-    //   writeTimer
-    // );
-    // handleReset();
   };
 
   const handleLog = async (priorTime, email, password) => {

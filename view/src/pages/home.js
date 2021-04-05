@@ -8,7 +8,6 @@ import Interface from "../components/interface";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -49,14 +48,17 @@ class Home extends Component {
     localStorage.removeItem("AuthToken");
     this.props.history.push("/login");
   };
+  formatToday = () => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+    return today.toString();
+  };
   componentDidMount = async () => {
     try {
-      // firebase
-      //   .auth()
-      //   .currentUser.getIdToken(true)
-      //   .then(function (idToken) {
-      //     console.log(idToken);
-      //   });
       authMiddleWare(this.props.history);
       const authToken = localStorage.getItem("AuthToken");
       axios.defaults.headers.common = { Authorization: `${authToken}` };
@@ -64,7 +66,6 @@ class Home extends Component {
         "http://localhost:5000/practice-tracker-80315/us-central1/api/user"
       );
       console.log("USERDATA>>>", userData);
-      // console.log(localStorage);
       if (userData) {
         this.setState({
           firstName: userData.data.userCredentials.firstName,
@@ -77,8 +78,21 @@ class Home extends Component {
           uiLoading: false,
           profilePicture: userData.data.userCredentials.imageUrl,
           seconds: userData.data.userCredentials.seconds,
+          days: userData.data.userCredentials.days,
         });
         console.log("HOME STATE", this.state);
+        if (
+          this.state.days[this.state.days.length - 1] !== this.formatToday()
+        ) {
+          console.log("time to write");
+          this.state.days.push(this.formatToday());
+          await axios.post(
+            "http://localhost:5000/practice-tracker-80315/us-central1/api/user",
+            { days: this.state.days }
+          );
+        } else {
+          console.log("Already logged today");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -114,18 +128,13 @@ class Home extends Component {
             }}
           >
             <div className={classes.toolbar} />
-            <Divider />
             <center>
               <Avatar
                 src={this.state.profilePicture}
                 className={classes.avatar}
-              />
-              <p>
-                {" "}
-                {this.state.firstName} {this.state.lastName}
-              </p>
+              />{" "}
+              {this.state.firstName} {this.state.lastName}
             </center>
-            <Divider />
             <List>
               <ListItem button key="Home" onClick={this.loadTodoPage}>
                 <ListItemIcon>
@@ -162,6 +171,7 @@ class Home extends Component {
                 email={this.state.email}
                 password={this.state.password}
                 firstName={this.state.firstName}
+                days={this.state.days}
               />
             )}
           </div>
