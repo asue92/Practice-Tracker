@@ -9,6 +9,8 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Timer from "./components/timer";
 
+import "./App.css";
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -17,6 +19,10 @@ const theme = createMuiTheme({
       dark: "#d50000",
       contrastText: "#fff",
     },
+    buttons: {
+      variant: "contained",
+    },
+    // type: "dark",
   },
 });
 

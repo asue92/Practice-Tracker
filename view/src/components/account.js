@@ -8,7 +8,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Divider,
   Button,
   Grid,
   TextField,
@@ -191,13 +190,11 @@ class Account extends Component {
               </div>
               <div className={classes.progress} />
             </CardContent>
-            <Divider />
           </Card>
 
           <br />
           <Card {...rest} className={clsx(classes.root, classes)}>
             <form autoComplete="off" noValidate>
-              <Divider />
               <CardContent>
                 <Grid container spacing={3}>
                   <Grid item md={6} xs={12}>
@@ -272,7 +269,6 @@ class Account extends Component {
                   </Grid>
                 </Grid>
               </CardContent>
-              <Divider />
               <CardActions />
             </form>
           </Card>
