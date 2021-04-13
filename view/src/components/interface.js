@@ -4,6 +4,7 @@ import Timer from "./timer";
 import Metronome from "./metronome";
 import Notifications from "./notifications";
 import Calendar from "./calendar";
+import MyCalendar from "./calendar2";
 
 class Interface extends Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class Interface extends Component {
             <main></main>
           </div>{" "}
         </div>
-        <Calendar />
+        {/* <Calendar /> */}
+        <MyCalendar />
       </div>
     );
   }
