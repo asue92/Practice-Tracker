@@ -5,6 +5,7 @@ import { authMiddleWare } from "../util/auth";
 import Account from "../components/account";
 import Interface from "../components/interface";
 
+import { Typography } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
@@ -113,13 +114,7 @@ class Home extends Component {
       return (
         <div className={classes.root}>
           <CssBaseline />
-          {/* <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <Typography variant="h6" noWrap>
-                Practice Tracker
-              </Typography>
-            </Toolbar>
-          </AppBar> */}
+
           <Drawer
             className={classes.drawer}
             variant="permanent"
@@ -133,7 +128,10 @@ class Home extends Component {
                 src={this.state.profilePicture}
                 className={classes.avatar}
               />{" "}
-              {this.state.firstName} {this.state.lastName}
+              <Typography variant="h4" marginTop="10">
+                {" "}
+                {this.state.firstName} {this.state.lastName}
+              </Typography>
             </center>
             <List>
               <ListItem button key="Home" onClick={this.loadTodoPage}>

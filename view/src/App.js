@@ -16,16 +16,42 @@ const theme = createMuiTheme({
     primary: {
       light: "#33c9dc",
       main: "#407899",
-      dark: "#d50000",
+      dark: "#8AB5CE",
       contrastText: "#fff",
-    },
-    buttons: {
-      variant: "contained",
     },
     // type: "dark",
   },
+  typography: {
+    align: "center",
+    fontSize: 14,
+  },
 });
 
+theme.typography.h4 = {
+  fontSize: 20,
+  fontWeight: "bold",
+  margin: 10,
+};
+
+theme.typography.h2 = {
+  fontSize: 30,
+  marginTop: 10,
+  marginBottom: 15,
+  background: "#4785A9",
+  color: "white",
+  borderRadius: 10,
+};
+theme.typography.subtitle1 = {
+  fontSize: 20,
+  color: "white",
+  padding: "8px",
+  fontWeight: "bold",
+  margin: 10,
+  marginLeft: 50,
+  marginRight: 50,
+  background: "#4785A9",
+  borderRadius: 10,
+};
 function App() {
   return (
     <MuiThemeProvider theme={theme}>

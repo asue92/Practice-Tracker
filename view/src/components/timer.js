@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, ButtonGroup, Typography } from "@material-ui/core";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
@@ -26,41 +26,27 @@ const Timer = (props) => {
   } = useTimer(0);
 
   return (
-    <Box border={1} padding={4}>
-      <div align="center">
-        <h3>Practice Timer {element}</h3>
-        <p>{formatTime(timer)}</p>
-        <div className="stopwatch-card">
-          <div className="buttons">
-            {!isActive && !isPaused ? (
-              <Button variant="contained" onClick={handleStart}>
-                Start
-              </Button>
-            ) : isPaused ? (
-              <Button variant="contained" onClick={(evt) => handlePause()}>
-                Pause
-              </Button>
-            ) : (
-              <Button variant="contained" onClick={handleResume}>
-                Resume
-              </Button>
-            )}
-            <Button
-              variant="contained"
-              onClick={handleReset}
-              disabled={!isActive}
-            >
-              Reset
-            </Button>
-            <Button
-              variant="contained"
-              onClick={(evt) => handleLog(seconds, props.email, props.password)}
-            >
-              Log
-            </Button>
-          </div>
-        </div>
-      </div>
+    <Box border={1} padding={4} align="center">
+      <Typography variant="h4">Practice Timer</Typography>
+      <Typography variant="h2">{formatTime(timer)}</Typography>
+      <ButtonGroup variant="contained" color="primary">
+        {" "}
+        {!isActive && !isPaused ? (
+          <Button onClick={handleStart}>Start</Button>
+        ) : isPaused ? (
+          <Button onClick={(evt) => handlePause()}>Pause</Button>
+        ) : (
+          <Button onClick={handleResume}>Resume</Button>
+        )}
+        <Button onClick={handleReset} disabled={!isActive}>
+          Reset
+        </Button>
+        <Button
+          onClick={(evt) => handleLog(seconds, props.email, props.password)}
+        >
+          Log
+        </Button>
+      </ButtonGroup>
     </Box>
   );
 };

@@ -179,7 +179,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #0f9f93 0%, #15404d 40%);
+  border-image: linear-gradient(45deg, #8ab5ce 0%, #15404d 40%);
   border-image-slice: 1;
 }
 
@@ -274,7 +274,7 @@ main {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #0a7168de;
+  background: #4f90b5;
   cursor: pointer;
 }
 
@@ -282,6 +282,6 @@ main {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #0f9f93a3;
+  background: #4f90b5;
   cursor: pointer;
 }

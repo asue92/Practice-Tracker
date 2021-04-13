@@ -116,10 +116,6 @@ export const toolStyles = (theme) => ({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "pink",
     },
-  },
-  buttons: {
-    variant: "contained",
   },
 });
