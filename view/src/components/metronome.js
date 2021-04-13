@@ -76,9 +76,11 @@ class Metronome extends Component {
 
     return (
       <Box border={1} padding={4}>
-        <h4 align="center">Metronome</h4>
-        <Typography align="center">
-          {bpm} BPM
+        <Typography component="div" align="center">
+          <Typography variant="h4">Metronome</Typography>
+          <Typography align="center" variant="subtitle1">
+            {bpm} BPM
+          </Typography>{" "}
           <input
             className="slider"
             type="range"
@@ -87,7 +89,7 @@ class Metronome extends Component {
             value={bpm}
             onChange={this.handleBpmChange}
           />
-          <Button variant="contained" onClick={this.startStop}>
+          <Button variant="contained" color="primary" onClick={this.startStop}>
             {playing ? "Stop" : "Start"}
           </Button>
         </Typography>
