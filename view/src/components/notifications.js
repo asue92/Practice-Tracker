@@ -10,6 +10,7 @@ class Notifications extends Component {
     super(props);
     this.state = {
       seconds: props.seconds,
+      days: props.days,
     };
   }
 
@@ -24,14 +25,12 @@ class Notifications extends Component {
     return `You have practiced for ${flooredHours.toLocaleString()} hours. Keep up the good work!`;
   };
 
-  streakMessage = () => {
-    let summaryObj = summary(this.props.days);
-    console.log(summaryObj);
-    if (summaryObj.currentStreak === 1) {
+  streakMessage = (input) => {
+    if (input.currentStreak === 1) {
       return "";
     }
-    if (summaryObj.todayInStreak && summaryObj.withinCurrentStreak === true) {
-      return `You are currently on a ${summaryObj.currentStreak} day streak.`;
+    if (input.todayInStreak && input.withinCurrentStreak === true) {
+      return `You are currently on a ${input.currentStreak} day streak.`;
     }
   };
 
@@ -42,7 +41,7 @@ class Notifications extends Component {
           {" "}
           {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
         </Typography>
-        <Typography>{this.streakMessage()}</Typography>
+        <Typography>{this.streakMessage(summary(this.state.days))}</Typography>
         <Typography> {this.convertSeconds(this.state.seconds)}</Typography>
       </Box>
     );

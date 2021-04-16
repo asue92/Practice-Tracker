@@ -19,7 +19,7 @@ const theme = createMuiTheme({
       dark: "#8AB5CE",
       contrastText: "#fff",
     },
-    // type: "dark",
+    type: "dark",
   },
   typography: {
     align: "center",
