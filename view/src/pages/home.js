@@ -83,7 +83,8 @@ class Home extends Component {
         });
         console.log("HOME STATE", this.state);
         if (
-          this.state.days[this.state.days.length - 1] !== this.formatToday()
+          this.state.days[this.state.days.length - 1] !== this.formatToday() ||
+          this.state.days[this.state.days.length - 1] === undefined
         ) {
           console.log("time to write");
           this.state.days.push(this.formatToday());
