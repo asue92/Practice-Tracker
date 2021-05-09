@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const app = require("express")();
-
+const cors = require("cors");
 const auth = require("./util/auth");
 
 const {
@@ -19,6 +19,7 @@ const {
   editTodo,
 } = require("./APIs/todos");
 
+app.use(cors());
 app.get("/todos", auth, getAllTodos);
 app.get("/todo/:todoId", auth, getOneTodo);
 app.post("/todo", auth, postOneTodo);
