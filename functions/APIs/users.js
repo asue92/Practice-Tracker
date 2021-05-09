@@ -73,6 +73,8 @@ exports.signUpUser = async (request, response) => {
       email: newUser.email,
       createdAt: new Date().toISOString(),
       userId,
+      days: [],
+      seconds: 0,
     };
     await db.doc(`/users/${newUser.username}`).set(userCredentials);
 
@@ -180,14 +182,3 @@ exports.updateUserDetails = async (request, response) => {
     });
   }
 };
-
-// {
-//   "firstName": "John",
-//   "lastName": "Mayer",
-//   "email":"jm@martin.com",
-//   "phoneNumber": "718-555-0101",
-//   "country": "USA",
-//   "password": "whygeorgia",
-//   "confirmPassword": "whygeorgia",
-//   "username": "jmayington"
-// }
