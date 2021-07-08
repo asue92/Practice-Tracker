@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Timer from "./timer";
 import Metronome from "./metronome";
 import Notifications from "./notifications";
-import Calendar from "./calendar";
 import MyCalendar from "./calendar2";
 
 class Interface extends Component {
