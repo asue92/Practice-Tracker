@@ -66,7 +66,6 @@ class Home extends Component {
       let userData = await axios.get(
         "http://localhost:5000/practice-tracker-80315/us-central1/api/user"
       );
-      console.log("USERDATA>>>", userData);
       if (userData) {
         this.setState({
           firstName: userData.data.userCredentials.firstName,
