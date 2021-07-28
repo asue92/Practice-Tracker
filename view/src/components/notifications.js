@@ -33,16 +33,25 @@ class Notifications extends Component {
       return `You are currently on a ${input.currentStreak} day streak.`;
     }
   };
+  // async componentDidMount() {
+  //   let outputMessage = await this.streakMessage(summary(this.state.days));
+  //   this.setState({
+  //     message: outputMessage,
+  //   });
+  // }
 
   render() {
+    let message = this.streakMessage(summary(this.state.days));
+    let time = this.convertSeconds(this.state.seconds);
+    console.log(this.state);
     return (
       <Box border={1} padding={4} align="center">
         <Typography>
           {" "}
           {`Hi, ${this.props.name}. Welcome to Practice Tracker.`}
         </Typography>
-        <Typography>{this.streakMessage(summary(this.state.days))}</Typography>
-        <Typography> {this.convertSeconds(this.state.seconds)}</Typography>
+        <Typography>{message}</Typography>
+        <Typography> {time}</Typography>
       </Box>
     );
   }
