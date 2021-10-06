@@ -59,7 +59,9 @@ class Todo extends Component {
     const authToken = localStorage.getItem("AuthToken");
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     axios
-      .get("http://localhost:5000/practice-tracker-80315/us-central1/api/todos")
+      .get(
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/todos"
+      )
       .then((response) => {
         this.setState({
           todos: response.data,
@@ -78,7 +80,8 @@ class Todo extends Component {
     let todoId = data.todo.todoId;
     axios
       .delete(
-        `http://localhost:5000/practice-tracker-80315/us-central1/api/todo/${todoId}`
+        `https://us-central1-practice-tracker-80315.cloudfunctions.net/api
+        /todo/${todoId}`
       )
       .then(() => {
         window.location.reload();
@@ -155,14 +158,14 @@ class Todo extends Component {
       let options = {};
       if (this.state.buttonType === "Edit") {
         options = {
-          url: `http://localhost:5000/practice-tracker-80315/us-central1/api/todo/${this.state.todoId}`,
+          url: `https://us-central1-practice-tracker-80315.cloudfunctions.net/api
+          api/todo/${this.state.todoId}`,
           method: "put",
           data: userTodo,
         };
       } else {
         options = {
-          url:
-            "http://localhost:5000/practice-tracker-80315/us-central1/api/todo",
+          url: "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/todo",
           method: "post",
           data: userTodo,
         };

@@ -64,7 +64,7 @@ class Home extends Component {
       const authToken = localStorage.getItem("AuthToken");
       axios.defaults.headers.common = { Authorization: `${authToken}` };
       let userData = await axios.get(
-        "http://localhost:5000/practice-tracker-80315/us-central1/api/user"
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/user"
       );
       if (userData) {
         this.setState({
@@ -88,7 +88,7 @@ class Home extends Component {
           console.log("time to write");
           this.state.days.push(this.formatToday());
           await axios.post(
-            "http://localhost:5000/practice-tracker-80315/us-central1/api/user",
+            "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/user",
             { days: this.state.days }
           );
         } else {

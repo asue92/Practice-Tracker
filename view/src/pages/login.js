@@ -53,7 +53,7 @@ class Login extends Component {
     console.log(this.state);
     axios
       .post(
-        "http://localhost:5000/practice-tracker-80315/us-central1/api/login",
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/login",
         userData
       )
       .then((response) => {

@@ -62,7 +62,7 @@ class Signup extends Component {
     };
     axios
       .post(
-        "http://localhost:5000/practice-tracker-80315/us-central1/api/signup",
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/signup",
         newUserData
       )
       .then((response) => {

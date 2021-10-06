@@ -43,7 +43,9 @@ class Account extends Component {
     const authToken = localStorage.getItem("AuthToken");
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     axios
-      .get("http://localhost:5000/practice-tracker-80315/us-central1/api/user")
+      .get(
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/user"
+      )
       .then((response) => {
         console.log(response.data);
         this.setState({
@@ -122,7 +124,7 @@ class Account extends Component {
     };
     axios
       .post(
-        "http://localhost:5000/practice-tracker-80315/us-central1/api/user",
+        "https://us-central1-practice-tracker-80315.cloudfunctions.net/api/user",
         formRequest
       )
       .then(() => {
